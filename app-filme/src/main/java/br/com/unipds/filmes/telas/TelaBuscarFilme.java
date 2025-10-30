@@ -1,0 +1,38 @@
+package br.com.unipds.filmes.telas;
+
+import java.util.List;
+import java.util.Scanner;
+
+import br.com.unipds.filmes.model.Ator;
+import org.springframework.data.repository.Repository;
+
+import br.com.unipds.filmes.model.Filme;
+import br.com.unipds.filmes.repository.FilmeRepository;
+
+public class TelaBuscarFilme implements Tela<Filme, Integer> {
+
+    @Override
+    public void executar(Scanner entrada, Repository<Filme, Integer> repositorio) {
+        System.out.println("\n**************");
+        System.out.println("Busca de filme");
+        System.out.println("**************");
+
+        System.out.print("Título a procurar: ");
+        String busca = entrada.nextLine();
+
+
+        //TODO implementar busca por trecho do título do filme case insensitive em ordem crescente
+        List<Filme> resultado = List.of();
+
+        if(resultado.isEmpty()) {
+            System.out.println("\nNão foram encontrados filmes com o parâmetro informado.");
+            return;
+        }
+
+        System.out.println("\nResultado da busca:");
+        System.out.println("-------------------");
+        resultado.forEach(System.out::println);
+        System.out.printf("\n%d filme(s) encontrado(s).\n", resultado.size());
+    }
+    
+}
