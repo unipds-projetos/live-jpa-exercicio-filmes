@@ -1,14 +1,22 @@
 package br.com.unipds.filmes.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "director")
 public class Diretor {
 
     @Id
+    @Column(name = "dir_id")
     private Integer id;
+
+    @Column(name = "dir_fname")
     private String nome;
+
+    @Column(name = "dir_lname")
     private String sobrenome;
 
     public Integer getId() {

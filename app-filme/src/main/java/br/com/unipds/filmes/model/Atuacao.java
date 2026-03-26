@@ -1,13 +1,18 @@
 package br.com.unipds.filmes.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "movie_cast")
 public class Atuacao {
 
     @EmbeddedId
     private AtuacaoId id;
+
+    @Column(name = "role")
     private String papel;
 
     public AtuacaoId getId() {

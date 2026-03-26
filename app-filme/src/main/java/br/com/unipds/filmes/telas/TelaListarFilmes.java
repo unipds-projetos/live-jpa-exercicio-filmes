@@ -12,8 +12,7 @@ public class TelaListarFilmes implements Tela<Filme, Integer> {
     public void executar(Scanner entrada, Repository<Filme, Integer> repositorio) {
         FilmeRepository repo = (FilmeRepository)repositorio;
 
-        //TODO implementar busca por filmes listando a atuação e os diretores
-        List<Filme> filmes = List.of();
+        List<Filme> filmes = repo.findAll();
 
         if(filmes.isEmpty()) {
             System.out.println("\nNão há filmes cadastrados.");
