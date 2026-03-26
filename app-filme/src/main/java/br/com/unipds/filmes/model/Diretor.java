@@ -1,7 +1,12 @@
 package br.com.unipds.filmes.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Diretor {
 
+    @Id
     private Integer id;
     private String nome;
     private String sobrenome;

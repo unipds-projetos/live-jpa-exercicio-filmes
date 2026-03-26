@@ -1,14 +1,20 @@
 package br.com.unipds.filmes.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@Entity
 public class Filme {
 
+    @Id
     private Integer id;
     private String titulo;
     private Integer ano;
@@ -18,8 +24,10 @@ public class Filme {
     private String pais;
 
 
+    @OneToMany
     private List<Atuacao> atuacoes;
 
+    @ManyToMany
     private List<Diretor> diretores = new ArrayList<>();
 
     public List<Atuacao> getAtuacoes() {

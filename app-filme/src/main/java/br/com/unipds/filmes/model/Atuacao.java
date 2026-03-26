@@ -1,7 +1,12 @@
 package br.com.unipds.filmes.model;
 
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+
+@Entity
 public class Atuacao {
 
+    @EmbeddedId
     private AtuacaoId id;
     private String papel;
 
