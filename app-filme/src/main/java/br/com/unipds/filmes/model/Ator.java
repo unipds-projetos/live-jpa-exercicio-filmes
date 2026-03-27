@@ -1,9 +1,6 @@
 package br.com.unipds.filmes.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "actor")
@@ -11,6 +8,8 @@ public class Ator {
 
     @Id
     @Column(name = "act_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "actor_id_seq")
+    @SequenceGenerator(name = "actor_id_seq", allocationSize = 1)
     private Integer id;
 
     @Column(name = "act_fname")

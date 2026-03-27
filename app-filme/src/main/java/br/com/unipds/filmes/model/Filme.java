@@ -3,10 +3,7 @@ package br.com.unipds.filmes.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Entity
 @Table(name = "movie")
@@ -14,6 +11,8 @@ public class Filme {
 
     @Id
     @Column(name = "mov_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "movie_id_seq")
+    @SequenceGenerator(name = "movie_id_seq", allocationSize = 1)
     private Integer id;
 
     @Column(name = "mov_title")
@@ -35,27 +34,27 @@ public class Filme {
     private String pais;
 
 
-    @OneToMany(mappedBy = "id.filme")
-    private List<Atuacao> atuacoes;
+    @OneToMany(mappedBy = "id.filme", fetch = FetchType.LAZY)
+    private Set<Atuacao> atuacoes;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "movie_direction",
             joinColumns = @JoinColumn(name = "mov_id"),
             inverseJoinColumns = @JoinColumn(name = "dir_id")
     )
-    private List<Diretor> diretores = new ArrayList<>();
+    private Set<Diretor> diretores = new HashSet<>();
 
-    public List<Atuacao> getAtuacoes() {
+    public Set<Atuacao> getAtuacoes() {
         return atuacoes;
     }
-    public void setAtuacoes(List<Atuacao> atuacoes) {
+    public void setAtuacoes(Set<Atuacao> atuacoes) {
         this.atuacoes = atuacoes;
     }
-    public List<Diretor> getDiretores() {
+    public Set<Diretor> getDiretores() {
         return diretores;
     }
-    public void setDiretores(List<Diretor> diretores) {
+    public void setDiretores(Set<Diretor> diretores) {
         this.diretores = diretores;
     }
     public Integer getId() {
@@ -112,7 +111,7 @@ public class Filme {
 
     @Override
     public String toString() {
-        return String.format("Filme:  %s  \nDiretores: %s \nAtuações: %s", 
+        return String.format("\n\nFilme: %s\nDiretores: %s\nAtuações: %s",
           titulo, diretores, atuacoes);
     }
 

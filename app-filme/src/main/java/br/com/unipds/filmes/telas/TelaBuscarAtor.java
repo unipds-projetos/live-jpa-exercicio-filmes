@@ -19,7 +19,7 @@ public class TelaBuscarAtor implements Tela<Ator, Integer> {
         String busca = entrada.nextLine();
 
         //TODO implementar busca por nome case insensitive em ordem crescente
-        List<Ator> resultado = List.of();
+        List<Ator> resultado = ((AtorRepository) repositorio).findByNomeContainsIgnoreCaseOrderByNomeAsc(busca);
 
         if(resultado.isEmpty()) {
             System.out.println("\nNão foram encontrados atores com o parâmetro informado.");

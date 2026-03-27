@@ -17,9 +17,6 @@ public class TelaCadastrarAtor implements Tela<Ator, Integer> {
         System.out.println("Cadastro de Atores");
         System.out.println("*****************");
 
-        System.out.print("Informe o id do Ator: ");
-        a.setId(entrada.nextInt());
-        entrada.nextLine();
         System.out.print("Primeiro nome: ");
         a.setNome(entrada.nextLine());
         System.out.print("Sobrenome: ");

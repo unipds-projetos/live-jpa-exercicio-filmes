@@ -21,8 +21,7 @@ public class TelaBuscarFilme implements Tela<Filme, Integer> {
         String busca = entrada.nextLine();
 
 
-        //TODO implementar busca por trecho do título do filme case insensitive em ordem crescente
-        List<Filme> resultado = List.of();
+        List<Filme> resultado = ((FilmeRepository) repositorio).findByTituloContainsIgnoreCaseOrderByTituloAsc(busca);
 
         if(resultado.isEmpty()) {
             System.out.println("\nNão foram encontrados filmes com o parâmetro informado.");
