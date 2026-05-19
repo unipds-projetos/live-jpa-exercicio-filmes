@@ -9,6 +9,14 @@ import java.util.List;
 
 public interface FilmeRepository extends JpaRepository<Filme, Integer> {
 
+    @Query("""
+       select distinct f from Filme f
+           left join fetch f.diretores
+           left join fetch f.atuacoes a
+           left join fetch a.id.ator
+           where lower(f.titulo) like lower(concat('%', :titulo, '%'))
+           order by f.titulo asc
+       """)
     List<Filme> findByTituloContainsIgnoreCaseOrderByTituloAsc(String titulo);
 
 //    @Query("""

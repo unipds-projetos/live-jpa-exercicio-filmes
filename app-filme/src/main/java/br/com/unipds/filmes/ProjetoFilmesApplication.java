@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class ProjetoFilmesApplication implements CommandLineRunner{
-	@Autowired
+	@Autowired(required = false)
 	private LoopPrincipal principal;
 
 	public static void main(String[] args) {
@@ -18,8 +18,9 @@ public class ProjetoFilmesApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		principal.loop();
-		System.exit(0);
-		
+		if (principal != null) {
+			principal.loop();
+			System.exit(0);
+		}
 	}
 }
